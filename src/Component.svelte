@@ -44,7 +44,7 @@
     return strTime;
   }
 
-	let allItems = dataProvider?.rows?.map(x => { 
+	$: allItems = dataProvider?.rows?.map(x => { 
 		let d = new Date(x[dateKey]);
 		return {
 			title: x[titleKey],
@@ -53,6 +53,8 @@
 			time: formatAMPM(d)
 		}
 	}) ?? [];
+	
+	$: allItems && initContent();
 
 	var days = [];	//	The days to display in each box
 
